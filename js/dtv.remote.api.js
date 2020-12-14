@@ -202,18 +202,7 @@
         validate : function(options) {
             var path = '/info/getOptions';
             var oldCallback;
-
-            if (!/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/.test(this.ipAddress)) {
-                options.callback({
-                    status : {
-                        code          : 405,
-                        commandResult : 1,
-                        msg           : 'Not a valid IP address',
-                        query         : path
-                    }
-                });
-            }
-
+            
             // We have to validate the `callback` option here since we have to
             // do some callback juggling so we can deliver customized messages
             // based on the result of the request.
@@ -373,7 +362,7 @@
             requestOptions || (requestOptions = {}); // Default options to an empty object if not supplied
             requestOptions.options || (requestOptions.options = {}); // Default options to an empty object if not supplied
 
-            var requestUrl = 'http://' + this.ipAddress + ':8080';
+            var requestUrl = 'https://' + this.ipAddress + ':8080';
             var requestQuery = requestOptions.path;
             var requestComplete = false;
             // This is the currently known list of available request parameters
